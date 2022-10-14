@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import AnimatedFrame from "@/components/AnimatedFrame.vue";
 import BatButton from "@/components/BatButton.vue";
+import { ref } from "vue";
+
+const isActive = ref(false);
+const handleButtonClick = () => {
+  isActive.value = true;
+};
 </script>
 <template>
   <div
     class="overflow-hidden relative w-screen h-screen bg-[image:url(/src/assets/images/gotham-city.webp)] bg-cover bg-center after:absolute after:w-full after:h-full after:bg-black/75"
   >
-    <AnimatedFrame />
-    <BatButton />
+    <AnimatedFrame v-if="isActive" />
+    <BatButton :active="isActive" :onClick="handleButtonClick" />
     <p
       class="absolute z-50 left-0 bottom-0 w-full py-4 text-gray-200 font-medium text-center text-sm sm:text-[1rem]"
     >
