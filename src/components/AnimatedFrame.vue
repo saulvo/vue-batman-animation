@@ -7,6 +7,7 @@ import {
 import { BeamLow } from "@/models/beam-low";
 import { Cloud } from "@/models/cloud";
 import { Spotlight } from "@/models/spotlight";
+import { Grapple } from "@/models/grapple";
 import { onMounted, ref } from "vue";
 import BeamLowImg from "../assets/images/beam-low.png";
 import CloudImg from "../assets/images/cloud.png";
@@ -61,6 +62,8 @@ onMounted(() => {
       spotlight.dy
     );
 
+    const grapple = new Grapple();
+
     const animate = (ctx: CanvasRenderingContext2D): void => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -73,6 +76,8 @@ onMounted(() => {
       beamLow.draw(ctx);
       beamLow.update();
 
+      grapple.init(ctx);
+      grapple.update();
       window.requestAnimationFrame(() => animate(ctx));
     };
 
