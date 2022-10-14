@@ -1,7 +1,19 @@
 import { ImageFrame } from "./image-frame";
-
+import audio from "@/assets/audio/signal-and-storm.mp3";
 export class BeamLow extends ImageFrame {
-  init(ctx: CanvasRenderingContext2D): void {
+  audio: HTMLAudioElement;
+  constructor(
+    image: HTMLImageElement,
+    sWidth: number,
+    sHeight: number,
+    dx: number,
+    dy: number
+  ) {
+    super(image, sWidth, sHeight, dx, dy);
+    this.audio = new Audio();
+    this.audio.src = audio;
+  }
+  draw(ctx: CanvasRenderingContext2D): void {
     const scaleX =
       window.innerWidth > 1024 ? 1 : (window.innerWidth * 1.2) / 1024;
     const scaleY =
@@ -22,9 +34,10 @@ export class BeamLow extends ImageFrame {
     ctx.restore();
   }
   update(): void {
-    if (this.gameFrame < 50) {
-      this.opacity = Math.floor(this.gameFrame / 5) % 2 === 0 ? 0 : 0.3;
-      this.gameFrame += 1;
+    if (this.screenFrame === 0) this.audio.play();
+    if (this.screenFrame < 100) {
+      this.opacity = Math.floor(this.screenFrame / 5) % 2 === 0 ? 0 : 0.3;
+      this.screenFrame += 1;
     } else {
       this.opacity = 0.5;
     }

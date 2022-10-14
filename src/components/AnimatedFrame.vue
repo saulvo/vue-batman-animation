@@ -57,7 +57,7 @@ onMounted(() => {
       beamLowImage,
       beamLowConfig.width,
       beamLowConfig.height,
-      spotlight.dx + spotlight.sWidth/2,
+      spotlight.dx + spotlight.sWidth / 2,
       spotlight.dy
     );
 
@@ -70,7 +70,7 @@ onMounted(() => {
       spotlight.draw(ctx);
       spotlight.update();
 
-      beamLow.init(ctx);
+      beamLow.draw(ctx);
       beamLow.update();
 
       window.requestAnimationFrame(() => animate(ctx));

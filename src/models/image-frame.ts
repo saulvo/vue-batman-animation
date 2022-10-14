@@ -9,7 +9,7 @@ export class ImageFrame {
 
   frameX: number;
   frameY: number;
-  gameFrame: number;
+  screenFrame: number;
   staggerFrames: number;
   opacity: number;
 
@@ -34,7 +34,7 @@ export class ImageFrame {
 
     this.frameX = 0;
     this.frameY = 0;
-    this.gameFrame = 0;
+    this.screenFrame = 0;
     this.opacity = 1;
   }
 

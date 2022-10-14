@@ -10,7 +10,7 @@ export const spotlightConfig = {
 export const cloudConfig = {
   width: 1013,
   height: 422,
-  framesX: 200 - 1013,
+  framesX: -100,
   framesY: -100,
 };
 
